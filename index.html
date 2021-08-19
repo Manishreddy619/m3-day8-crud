@@ -86,7 +86,7 @@
 			</nav>
 		</div>
 		<div class="container mt-4 mb-4">
-			<div class="row product-wrapper"></div>
+			<div class="row product-wrapper product"></div>
 		</div>
 		<!-- Optional JavaScript; choose one of the two! -->
 
@@ -102,6 +102,7 @@
 			crossorigin="anonymous"
 		></script>
 		<script>
+		
 			window.onload = async () => {
 				const getData = async () => {
 					let url = '  https://striveschool-api.herokuapp.com/api/product/';
@@ -116,16 +117,20 @@
 						});
 						const data = await res.json();
 						data.forEach((element) => {
+                            console.log(element)
 							return (container.innerHTML += `
                             <div class="col-6 col-md-4 col-xl-3 mt-3">
-                        <div class="card" ">
+                        <div class="card" >
   <img src=${element.imageUrl} class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${element.name}</h5>
     <p class="card-text">${element.description}</p>
     <a href="#" class="btn btn-primary">${element.price} €</a>
   </div>
-</div> </div>
+ <a href ="details.html?id=${element._id} ">View Product</a>
+
+</div> 
+</div>
                             `);
 						});
 						return data;
@@ -135,6 +140,11 @@
 				};
 				await getData();
 			};
+           
+		
+				
+					
+					
 		</script>
 		<!-- Option 2: Separate Popper and Bootstrap JS -->
 		<!--

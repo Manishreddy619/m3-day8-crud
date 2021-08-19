@@ -73,7 +73,7 @@
 				>
 		</div>
 		<div class="container mt-3 mb-3">
-			<h3>Create Product</h3>
+			<h3 class="h3">Create Product</h3>
 
 			<div class="container">
 				<form id="myForm" class="form" onsubmit="handleSubmit(event)">
@@ -83,6 +83,7 @@
 						id="productName"
 						name="firstname"
 						placeholder="laptop ex.."
+						required
 					/>
 
 					<label for="brandName">Brand</label>
@@ -98,6 +99,7 @@
 						id="image"
 						name="lastname"
 						placeholder="https://m.media-amazon.com/images/I/81aSkPwBH0L._AC_UY218_.jpg"
+						required
 					/>
 					<label for="price">price</label>
 					<input
@@ -105,6 +107,7 @@
 						id="price"
 						name="lastname"
 						placeholder="for ex 22.."
+						required
 					/>
 
 					<label for="subject">Description</label>
@@ -113,11 +116,14 @@
 						name="subject"
 						placeholder="Write something.. about product"
 						style="height: 200px"
+						required
 					></textarea>
 
 					<button type="submit" name="submit" class="btn-primary">
-						submit
+					<span>submit</span>
 					</button>
+				
+					
 				</form>
 			</div>
 		</div>
