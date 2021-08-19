@@ -86,6 +86,9 @@
 			</nav>
 		</div>
 		<div class="container mt-4 mb-4">
+			<div class="spinner-border text-secondary" role="status">
+               <span class="sr-only">Loading...</span>
+</div>
 			<div class="row product-wrapper product"></div>
 		</div>
 		<!-- Optional JavaScript; choose one of the two! -->
@@ -115,7 +118,10 @@
 									'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFjZWMwMTJkNTI2MjAwMTViNmRjOGYiLCJpYXQiOjE2MjkyODUzNzcsImV4cCI6MTYzMDQ5NDk3N30.n3m29qn0yRjmjhZmT7o8YOt7-tA7QDJdS9mnt2biQwQ',
 							},
 						});
-						const data = await res.json();
+						if(res.ok){
+							const spinner =document.querySelector(".spinner-border") 
+							spinner.remove()
+							const data = await res.json();
 						data.forEach((element) => {
                             console.log(element)
 							return (container.innerHTML += `
@@ -133,6 +139,7 @@
 </div>
                             `);
 						});
+						}
 						return data;
 					} catch (err) {
 						console.log(err);

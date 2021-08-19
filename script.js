@@ -49,6 +49,8 @@ window.onload = async () => {
 		document.querySelector('.h3').innerText = 'Edit Product';
 		subtBtn.querySelector('span').innerText = 'Edit Event';
 		subtBtn.classList.add('btn-success');
+		const delBtn = document.querySelector('#delete');
+		delBtn.classList.remove('d-none');
 		const response = await fetch(endPoint, {
 			headers: {
 				'content-Type': 'application/json',
@@ -101,6 +103,29 @@ const handleSubmit = async (event) => {
 		}
 	} catch (err) {
 		console.log(err);
+	}
+};
+const deleteMe = async () => {
+	if (eventId) {
+		try {
+			const res = await fetch(endPoint, {
+				method: 'DELETE',
+
+				headers: {
+					'content-Type': 'application/json',
+					Authorization:
+						'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFjZWMwMTJkNTI2MjAwMTViNmRjOGYiLCJpYXQiOjE2MjkyODUzNzcsImV4cCI6MTYzMDQ5NDk3N30.n3m29qn0yRjmjhZmT7o8YOt7-tA7QDJdS9mnt2biQwQ',
+				},
+			});
+			if (res.ok) {
+				const data = await res.json();
+				if (eventId) {
+					alert(`product has been Deleted from api with an name${data._id}`);
+				}
+			}
+		} catch (err) {
+			console.log(err);
+		}
 	}
 };
 //  <!--
